@@ -1,0 +1,37 @@
+// Ultrasonic Distance Measurement with LED Indicator
+const int trigPin = 9; // Ultrasonic TRIG pin
+const int echoPin = 10; // Ultrasonic ECHO pin
+const int ledPin = 7; // LED pin
+long duration;
+int distance;
+void setup () {
+Serial.begin (9600);
+pinMode (trigPin, OUTPUT);
+pinMode (echoPin, INPUT);
+pinMode (ledPin, OUTPUT); // Set LED pin as output
+}
+void loop () {
+// Clear the trigPin
+digitalWrite (trigPin, LOW);
+delayMicroseconds (2);
+// Trigger the ultrasonic pulse
+
+digitalWrite (trigPin, HIGH);
+delayMicroseconds (10);
+digitalWrite (trigPin, LOW);
+// Measure echo response time
+duration = pulseIn (echoPin, HIGH);
+// Convert time to distance
+distance = duration * 0.034 / 2;
+// Print distance to Serial Monitor
+Serial.print ("Distance: ");
+Serial.print (distance);
+Serial.println (" cm");
+// LED control: Turn ON if distance < 200 cm
+if (distance < 200) {
+digitalWrite (ledPin, HIGH); // LED ON
+} else {
+digitalWrite (ledPin, LOW); // LED OFF
+}
+delay(500);
+}
