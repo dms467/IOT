@@ -1,0 +1,21 @@
+const int vibrationPin = 2; // Tilt switch / vibration sensor input
+const int ledPin = 13; // LED output
+int vibrationState = 0;
+void setup () {
+pinMode(vibrationPin, INPUT);
+pinMode(ledPin, OUTPUT);
+Serial.begin(9600);
+}
+void loop () {
+// Read sensor
+vibrationState = digitalRead(vibrationPin);
+if (vibrationState == HIGH) {
+digitalWrite(ledPin, HIGH); // LED ON
+Serial.println("Vibration Detected!");
+} else {
+
+digitalWrite(ledPin, LOW); // LED OFF
+Serial.println("No Vibration");
+}
+delay(200); // small delay to stabilize readings
+}
