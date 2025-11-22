@@ -1,0 +1,26 @@
+// Temperature Notification using LM35
+
+int sensorPin = A0; // LM35 output connected to A0 (TMP36)
+int ledPin = 13; // LED connected to pin 13
+float temperature; // variable to store temperature
+void setup() {
+Serial.begin (9600); // Start Serial Monitor
+pinMode(ledPin, OUTPUT);
+}
+void loop () {
+int reading = analogRead(sensorPin); // read sensor value
+temperature = (reading * 5.0 * 100.0) / 1024; // convert to Celsius
+Serial.print("Temperature: ");
+Serial.print(temperature);
+
+Serial.println(" *C");
+
+// Notification if temperature > 30°C
+if (temperature > 30) {
+digitalWrite(ledPin, HIGH); // Turn ON LED
+Serial.println("⚠️ High Temperature!");
+} else {
+digitalWrite(ledPin, LOW); // Turn OFF LED
+}
+delay(1000); // read every second
+}
