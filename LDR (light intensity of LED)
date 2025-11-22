@@ -1,0 +1,20 @@
+int LDR_Pin = A0; // LDR connected to A0
+int LED_Pin = 9; // LED connected to digital pin 9 (PWM)
+void setup() {
+pinMode(LED_Pin, OUTPUT);
+Serial.begin(9600); // for debugging
+}
+void loop () {
+int ldrValue = analogRead (LDR_Pin); // Read LDR (0–1023)
+
+// Map LDR value to LED brightness (0–255 for PWM)
+
+int ledBrightness = map (ldrValue, 0, 1023, 255, 0);
+// Inverted mapping: more light → dim LED, less light → brighter LED
+analogWrite (LED_Pin, ledBrightness); // Adjust LED brightness
+Serial.print ("LDR Value: ");
+Serial.print (ldrValue);
+Serial.print (" LED Brightness: ");
+Serial.println (ledBrightness);
+Delay (100);
+}
