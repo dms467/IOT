@@ -1,3 +1,4 @@
+ls
 mkdir Practice
 cd Practice
 touch myfile.txt
