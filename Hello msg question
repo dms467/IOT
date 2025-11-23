@@ -1,5 +1,5 @@
-// a) Read your name and print Hello messag
-// Code:
+**a) Read your name and print Hello message**
+## Code:
 name = input("Enter your name: ")
 print("Hello, " + name + "!")
 
