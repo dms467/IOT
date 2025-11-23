@@ -1,0 +1,12 @@
+mkdir Practice
+cd Practice
+touch myfile.txt
+ls
+mv myfile.txt newname.txt
+cat newname.txt
+gzip newname.txt
+ls
+gunzip newname.txt.gz
+rm newname.txt
+cd ..
+rmdir Practice
